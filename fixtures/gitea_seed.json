@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "organization": {
+    "name": "sandbox-labs",
+    "full_name": "Sandbox Labs",
+    "description": "Deterministic Phase 2 Gitea sandbox organization.",
+    "visibility": "public"
+  },
+  "team": {
+    "name": "developers",
+    "description": "Deterministic maintainers for the sandbox fixture.",
+    "permission": "write",
+    "units": [
+      "repo.code",
+      "repo.issues",
+      "repo.pulls",
+      "repo.releases"
+    ]
+  },
+  "repository": {
+    "name": "adapter-demo",
+    "description": "Deterministic repository populated through the Gitea REST API.",
+    "default_branch": "main",
+    "private": false
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "message": "Create deterministic README",
+      "content": "# Adapter Demo\n\nThis repository is populated deterministically by gitea-sandbox-adapter Phase 2.\n\n- Organization: sandbox-labs\n- Repository: adapter-demo\n- Validation: API and browser\n"
+    },
+    {
+      "path": "docs/phase-2-notes.md",
+      "message": "Create deterministic Phase 2 notes",
+      "content": "# Phase 2 Notes\n\nThe sandbox fixture is intentionally small, stable, and idempotent.\n\nIt exists to prove Gitea REST API population, validation, snapshot, restore, and reset workflows.\n"
+    }
+  ],
+  "labels": [
+    {
+      "name": "kind/api",
+      "color": "1f883d",
+      "description": "API validation fixture label"
+    },
+    {
+      "name": "kind/browser",
+      "color": "0969da",
+      "description": "Browser validation fixture label"
+    }
+  ],
+  "milestone": {
+    "title": "Phase 2 Deterministic Baseline",
+    "description": "Milestone created through the Gitea REST API.",
+    "state": "open"
+  },
+  "issue": {
+    "title": "Validate deterministic sandbox population",
+    "body": "This issue is created and converged by the Phase 2 population workflow.",
+    "state": "open"
+  },
+  "release": {
+    "tag_name": "v0.1.0-phase-2",
+    "target_commitish": "main",
+    "name": "Phase 2 Deterministic Fixture",
+    "body": "Release created after deterministic repository content exists.",
+    "draft": false,
+    "prerelease": true
+  }
+}
