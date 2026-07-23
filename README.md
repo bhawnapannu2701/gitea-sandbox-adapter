@@ -159,9 +159,12 @@ failed because pytest assumed an ignored `.gitea-sandbox/pytest-tmp` parent
 directory in a clean checkout, and the Linux Docker integration runner lacked
 the Playwright Chromium browser binary before restore-time browser validation.
 
-Targeted local fixes have been added, but the corrected hosted rerun remains
-pending until this correction is committed and pushed. This repository does not
-claim GitHub-hosted CI passing status yet.
+GitHub-hosted CI run #3 passed on the corrected pull-request commit. Quality
+jobs passed on Ubuntu and Windows with Python 3.11 and 3.12, and the Linux
+Docker integration job passed. The Docker job successfully completed Playwright
+Chromium installation, sandbox start, deterministic population, API validation,
+snapshot, forced restore, integration pytest, and cleanup. Raw diagnostics were
+not uploaded because the successful job did not need failure diagnostics.
 
 ## Security Limits
 

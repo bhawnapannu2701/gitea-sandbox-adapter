@@ -463,9 +463,15 @@ Workflow:
     dependency installation and before restore/browser validation;
   - restricted workflow `push` triggers to `main` while preserving
     `pull_request` and concurrency cancellation.
-- Corrected GitHub-hosted rerun: pending until this correction is committed and
-  pushed.
-- CI pass claimed: no.
+- Corrected GitHub-hosted rerun: run #3 passed on the corrected pull-request
+  commit.
+- Quality jobs: passed on Ubuntu and Windows with Python 3.11 and 3.12.
+- Linux Docker integration: passed.
+- Docker job completed: Playwright Chromium installation, sandbox start,
+  deterministic population, API validation, snapshot, forced restore,
+  integration pytest, and cleanup.
+- Raw diagnostics uploaded: no; the successful job did not need failure
+  diagnostics.
 
 ## Final End-to-End Verification
 

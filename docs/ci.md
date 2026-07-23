@@ -39,10 +39,11 @@ Current status:
 - Restore failed because it performs real Playwright browser validation and the
   GitHub-hosted runner did not yet have the Chromium browser binary installed
   for the Python Playwright package.
-- Targeted fixes have been added locally: pytest now uses normal portable temp
-  directory behavior, the Linux Docker integration job installs Playwright
-  Chromium after Python dependencies and before restore, and push triggers are
-  restricted to `main` to prevent duplicate feature-branch push runs.
-- The corrected GitHub-hosted rerun remains pending until this correction is
-  committed and pushed.
-- CI pass is not claimed.
+- GitHub-hosted CI run #3 passed on the corrected pull-request commit.
+- Quality jobs passed on Ubuntu and Windows with Python 3.11 and 3.12.
+- Linux Docker integration passed.
+- The Docker job successfully completed Playwright Chromium installation,
+  sandbox start, deterministic population, API validation, snapshot, forced
+  restore, integration pytest, and cleanup.
+- Raw diagnostics were not uploaded because the successful job did not need
+  failure diagnostics.
