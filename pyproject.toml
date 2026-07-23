@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "gitea-sandbox-adapter"
 version = "0.1.0"
-description = "Phase 1 foundation for a Gitea sandbox adapter."
+description = "Production-style local Gitea and PostgreSQL sandbox adapter."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { file = "LICENSE" }
@@ -16,7 +16,9 @@ dependencies = []
 
 [project.optional-dependencies]
 dev = [
+  "build>=1.2",
   "mypy>=1.10",
+  "playwright>=1.46",
   "pytest>=8.0",
   "ruff>=0.5",
 ]
@@ -32,6 +34,12 @@ testpaths = ["tests"]
 addopts = [
   "--strict-config",
   "--strict-markers",
+  "--basetemp=.gitea-sandbox/pytest-tmp",
+  "-p",
+  "no:cacheprovider",
+]
+markers = [
+  "integration: real Docker/Gitea/PostgreSQL integration tests",
 ]
 
 [tool.ruff]

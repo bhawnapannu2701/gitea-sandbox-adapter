@@ -49,6 +49,7 @@ coverage.xml
 *.py.cover
 .hypothesis/
 .pytest_cache/
+.pytest-tmp/
 cover/
 
 # Translations
@@ -205,6 +206,18 @@ tempCodeRunnerFile.py
 
 # Ruff stuff:
 .ruff_cache/
+
+# gitea-sandbox-adapter local runtime state
+.gitea-sandbox/
+.gitea-sandbox/browser-evidence/
+snapshots/
+snapshot-tmp/
+browser-artifacts/
+playwright-report/
+test-results/
+*.runtime.log
+*.token
+*.secret
 
 # PyPI configuration file
 .pypirc
