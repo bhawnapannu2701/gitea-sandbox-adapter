@@ -34,7 +34,6 @@ testpaths = ["tests"]
 addopts = [
   "--strict-config",
   "--strict-markers",
-  "--basetemp=.gitea-sandbox/pytest-tmp",
   "-p",
   "no:cacheprovider",
 ]

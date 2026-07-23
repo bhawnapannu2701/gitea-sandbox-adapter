@@ -154,9 +154,14 @@ pytest -m integration
 
 ## CI Status
 
-`.github/workflows/ci.yml` has been created and locally inspected. GitHub-hosted
-execution has not run until a future push or pull request, so this repository
-does not claim CI passing status yet.
+The first GitHub-hosted CI executions for pull request #2 ran on 2026-07-23 and
+failed because pytest assumed an ignored `.gitea-sandbox/pytest-tmp` parent
+directory in a clean checkout, and the Linux Docker integration runner lacked
+the Playwright Chromium browser binary before restore-time browser validation.
+
+Targeted local fixes have been added, but the corrected hosted rerun remains
+pending until this correction is committed and pushed. This repository does not
+claim GitHub-hosted CI passing status yet.
 
 ## Security Limits
 

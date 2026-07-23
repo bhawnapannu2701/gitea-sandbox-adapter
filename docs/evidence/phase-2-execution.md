@@ -430,10 +430,8 @@ Workflow:
 
 - File: `.github/workflows/ci.yml`
 - Local structural inspection command verified required sections and action
-  versions.
-- Parser note: Ruby and native PowerShell YAML parsers were not available in
-  this environment; no GitHub-hosted workflow execution was run.
-- Configured:
+  versions before the first hosted run.
+- Initially configured:
   - `actions/checkout@v6`
   - `actions/setup-python@v6`
   - least-privilege `contents: read`
@@ -441,7 +439,32 @@ Workflow:
   - Linux Docker integration job
   - concurrency cancellation
   - sanitized failure artifact upload only
-- GitHub-hosted execution: not run.
+- First GitHub-hosted CI execution for pull request #2: run.
+- First hosted CI result: failed.
+- Quality matrix root cause: pytest was configured with
+  `--basetemp=.gitea-sandbox/pytest-tmp`; clean GitHub runners had no ignored
+  `.gitea-sandbox` parent directory.
+- Linux Docker integration progress before failure:
+  - Docker Compose verification passed.
+  - Python dependency installation passed.
+  - CI `.env` generation passed.
+  - Compose configuration passed.
+  - Sandbox start passed.
+  - Deterministic population passed.
+  - API validation passed.
+  - Snapshot creation passed.
+- Linux Docker integration root cause: restore performs real browser
+  validation, but the GitHub-hosted runner did not have the Chromium executable
+  installed for the Python Playwright package.
+- Targeted local corrections:
+  - removed the pytest temp-directory override so clean checkouts use pytest's
+    normal portable temp handling;
+  - added `python -m playwright install --with-deps chromium` after Python
+    dependency installation and before restore/browser validation;
+  - restricted workflow `push` triggers to `main` while preserving
+    `pull_request` and concurrency cancellation.
+- Corrected GitHub-hosted rerun: pending until this correction is committed and
+  pushed.
 - CI pass claimed: no.
 
 ## Final End-to-End Verification

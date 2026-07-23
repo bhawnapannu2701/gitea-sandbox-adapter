@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - feat/**
   pull_request:
 
 permissions:
@@ -55,6 +54,8 @@ jobs:
         run: docker compose version
       - name: Install dev dependencies
         run: python -m pip install -e ".[dev]"
+      - name: Install Playwright Chromium
+        run: python -m playwright install --with-deps chromium
       - name: Generate local CI .env
         run: |
           python - <<'PY'

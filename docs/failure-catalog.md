@@ -6,8 +6,14 @@ Observed during Phase 2 execution:
   through the approved execution path.
 - Plain `python` was not on PATH; the project virtual environment provided
   Python `3.12.13`.
-- Pytest initially attempted to use a user temp directory that was inaccessible
-  from the sandbox; pytest now uses ignored repo-local `.pytest-tmp`.
+- Pytest first attempted to use a user temp directory that was inaccessible
+  from the local sandbox. A later GitHub-hosted clean runner exposed that
+  configuring pytest under `.gitea-sandbox/pytest-tmp` assumed an ignored parent
+  directory already existed. Pytest now uses its normal portable temporary
+  directory behavior.
+- The first Linux Docker integration run on GitHub passed start, population,
+  API validation, and snapshot creation, then restore failed because
+  Playwright's Chromium browser binary had not been installed on the runner.
 - First stopped `diagnose` crashed because recursive redaction converted nested
   container dictionaries to strings; redaction now preserves nested mappings.
 - Gitea returned `201` for issue `PATCH`; population now accepts the actual
